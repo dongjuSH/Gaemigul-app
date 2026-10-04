@@ -15,7 +15,7 @@ cp .env.example .env.local      # NEXT_PUBLIC_API_BASE_URL 입력 (커밋하지 
 npm run dev                     # http://localhost:3000
 ```
 
-- 화면에 실제 데이터가 나오려면 백엔드가 떠 있어야 한다. 로컬 백엔드는 `http://localhost:8000` (API 문서: `http://localhost:8000/docs`). 백엔드를 켜기 전에 루트 `README.md`의 "4. 운영 규칙"(로컬 백엔드를 켜면 안 되는 시간)을 먼저 확인한다.
+- 화면에 실제 데이터가 나오려면 백엔드가 떠 있어야 한다. 로컬 백엔드는 `http://localhost:8000` (API 문서: `http://localhost:8000/docs`). 백엔드를 켜기 전에 [`docs/OPERATIONS.md`](../docs/OPERATIONS.md#4-운영-규칙)의 "4. 운영 규칙"(로컬 백엔드를 켜면 안 되는 시간)을 먼저 확인한다.
 - 환경변수는 `NEXT_PUBLIC_API_BASE_URL` 하나다. 값이 없으면 코드가 `http://localhost:8000`을 쓴다 (`lib/api/client.ts` 외 `lib/api/*.ts` 각 파일).
 - KIS·Gemini 등 외부 API 키는 프런트엔드에 두지 않는다. 브라우저는 백엔드만 호출한다.
 - 스토리북은 없다.
@@ -35,7 +35,7 @@ npm run dev                     # http://localhost:3000
 - Vercel 프런트는 HTTPS, 백엔드 운영 서버는 HTTP다. HTTPS 페이지에서 HTTP 주소를 직접 부르면 브라우저가 **mixed content**로 막는다.
 - 그래서 브라우저는 같은 출처의 `https://<프런트 도메인>/api/...`를 부르고, Vercel이 서버 쪽에서 백엔드 `http://...:8000/...`로 넘긴다. `/api` 접두사는 떼고 전달된다 (`/api/timeline` → `/timeline`).
 - 브라우저 입장에서는 같은 출처 요청이라 CORS 프리플라이트가 없고, 세션 쿠키도 프런트 도메인의 쿠키로 저장된다. 백엔드 `.env.example`의 "다른 도메인이면 `SESSION_COOKIE_SECURE=true`·`SAMESITE=none`" 설정은 프록시를 거치지 않고 직접 부를 때 이야기다.
-- **백엔드 서버 주소는 `vercel.json`에만 둔다.** 이 README나 다른 문서에는 적지 않는다 (루트 README 운영 규칙: 공개 저장소이고 서버가 HTTP라 스캔 대상이 된다). 서버를 옮기면 `vercel.json`의 `destination`을 고치고 재배포한다.
+- **실제 백엔드 서버 주소는 저장소에 두지 않는다.** `vercel.json`의 `destination`은 `<BACKEND_HOST>` 자리표시자이므로, 배포할 때 실제 서버 주소로 바꿔 넣는다 (공개 저장소이고 서버가 HTTP라 스캔 대상이 된다).
 
 ### `NEXT_PUBLIC_API_BASE_URL`
 
