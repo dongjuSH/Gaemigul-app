@@ -1,0 +1,31 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Environment variables (API keys/secrets)
+.env
+.env.*
+!.env.example
+
+
+# Locally cached API tokens
+.cache/
+
+# macOS
+.DS_Store
+
+# 로그
+logs/
+
+# 실행 완료된 1회성 DB 스키마 마이그레이션 기록 (로컬 보관용, 팀 저장소에는 올리지 않음)
+scripts/add_actual_label_column.py
+scripts/drop_forecast_column.py
+scripts/expand_payems_thousands.py
+scripts/fix_payems_space.py

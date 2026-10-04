@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff7f7"/>
+      <stop offset="1" stop-color="#f4f7ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#1f2937" flood-opacity=".13"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title { font: 700 28px "Segoe UI", sans-serif; fill: #111827; }
+      .label { font: 700 17px "Segoe UI", sans-serif; fill: #111827; }
+      .text { font: 14px "Segoe UI", sans-serif; fill: #475569; }
+      .small { font: 12px "Segoe UI", sans-serif; fill: #64748b; }
+      .box { stroke: #e2e8f0; stroke-width: 2; rx: 18; filter: url(#shadow); }
+      .arrow { stroke: #64748b; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <text x="60" y="58" class="title">개미굴 히트맵 구현 구조</text>
+  <text x="60" y="86" class="text">원천 시세를 검증·집계한 뒤, 안전한 스냅샷을 탐색형 Treemap으로 표현</text>
+
+  <rect x="60" y="140" width="230" height="190" fill="#fff" class="box"/>
+  <text x="85" y="180" class="label">KIS API</text>
+  <text x="85" y="215" class="text">현재가·누적 거래량</text>
+  <text x="85" y="242" class="text">일봉·종목 마스터</text>
+  <text x="85" y="269" class="text">업종 마스터·거래일</text>
+  <text x="85" y="305" class="small">브라우저에서 직접 호출하지 않음</text>
+
+  <rect x="350" y="120" width="300" height="240" fill="#fff" class="box"/>
+  <text x="380" y="160" class="label">FastAPI + Scheduler</text>
+  <text x="380" y="198" class="text">1. 거래일·장 상태 판정</text>
+  <text x="380" y="226" class="text">2. 10분 슬롯 시세 수집</text>
+  <text x="380" y="254" class="text">3. 기간별 기준가 계산</text>
+  <text x="380" y="282" class="text">4. 업종·종목 집계</text>
+  <text x="380" y="310" class="text">5. 누락·지연 상태 관리</text>
+  <text x="380" y="338" class="small">KOSPI / KOSDAQ 공통 파이프라인</text>
+
+  <rect x="710" y="140" width="220" height="190" fill="#fff" class="box"/>
+  <text x="740" y="180" class="label">Snapshot Cache</text>
+  <text x="740" y="218" class="text">메모리 스냅샷</text>
+  <text x="740" y="245" class="text">JSON 파일 캐시</text>
+  <text x="740" y="272" class="text">마지막 성공값 유지</text>
+  <text x="740" y="305" class="small">GET은 읽기 전용</text>
+
+  <rect x="990" y="120" width="150" height="240" fill="#fff" class="box"/>
+  <text x="1020" y="160" class="label">API</text>
+  <text x="1015" y="205" class="text">GET</text>
+  <text x="1015" y="232" class="text">/heatmap</text>
+  <text x="1015" y="275" class="small">market</text>
+  <text x="1015" y="298" class="small">period</text>
+  <text x="1015" y="335" class="small">Pydantic 계약</text>
+
+  <path d="M290 235 H350" class="arrow"/>
+  <path d="M650 235 H710" class="arrow"/>
+  <path d="M930 235 H990" class="arrow"/>
+
+  <rect x="120" y="450" width="300" height="180" fill="#fff" class="box"/>
+  <text x="150" y="490" class="label">Next.js / React</text>
+  <text x="150" y="528" class="text">시장·기간 필터</text>
+  <text x="150" y="555" class="text">자동 폴링·AbortController</text>
+  <text x="150" y="582" class="text">수동 갱신 1분 제한</text>
+  <text x="150" y="609" class="small">KIS 인증정보 없음</text>
+
+  <rect x="500" y="430" width="300" height="220" fill="#fff" class="box"/>
+  <text x="530" y="470" class="label">Treemap 시각화</text>
+  <text x="530" y="508" class="text">시가총액 → 면적</text>
+  <text x="530" y="535" class="text">등락률 → 빨강/파랑 색상</text>
+  <text x="530" y="562" class="text">업종 확대·종목 검색</text>
+  <text x="530" y="589" class="text">툴팁·키보드 포커스</text>
+  <text x="530" y="622" class="small">sqrt 시가총액 + squarified layout</text>
+
+  <rect x="880" y="450" width="260" height="180" fill="#fff" class="box"/>
+  <text x="910" y="490" class="label">사용자 화면</text>
+  <text x="910" y="528" class="text">HOT 거래량 1위 업종</text>
+  <text x="910" y="555" class="text">장 상태·기준일</text>
+  <text x="910" y="582" class="text">수집률·지연 안내</text>
+  <text x="910" y="609" class="small">시장 패턴을 한눈에 탐색</text>
+
+  <path d="M1065 360 V420 H270 V450" class="arrow"/>
+  <path d="M420 540 H500" class="arrow"/>
+  <path d="M800 540 H880" class="arrow"/>
+</svg>

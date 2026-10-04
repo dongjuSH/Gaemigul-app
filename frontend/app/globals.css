@@ -1,0 +1,285 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css");
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* 살짝 넘쳤다가 돌아오는 "통통 튀는" 곡선 - 사이드바 열고 닫기, 툴팁 등장 등에 공통으로 쓴다(ease-bounce) */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --color-point: #ff2a2a;
+  --color-point2: #b45309;
+  --color-point3: #fef3c7;
+  --color-increase: #ff2a2a;
+  --color-ant-bg: #f9f9fa;
+  --color-line-bg: #e5e7eb;
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-pretendard);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-heatmap-canvas: var(--heatmap-canvas);
+  --color-heatmap-soft: var(--heatmap-soft);
+  --color-heatmap-panel: var(--heatmap-panel);
+  --color-heatmap-border: var(--heatmap-border);
+  --color-heatmap-accent: var(--heatmap-accent);
+  --color-heatmap-accent-hover: var(--heatmap-accent-hover);
+  --color-decrease: var(--decrease);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  /* 히트맵도 다른 페이지와 같은 면·테두리·포인트 색을 쓴다 */
+  --heatmap-canvas: var(--muted);
+  --heatmap-soft: color-mix(in oklab, var(--color-point) 10%, transparent);
+  --heatmap-panel: var(--card);
+  --heatmap-border: var(--border);
+  --heatmap-accent: var(--color-point);
+  --heatmap-accent-hover: color-mix(in oklab, var(--color-point) 85%, black);
+  --decrease: #2563eb;
+  --attendance-0: #f3ede1;
+  --attendance-1: #e2c393;
+  --attendance-2: #c69a5f;
+  --attendance-3: #96652f;
+  --attendance-4: #5c3a1e;
+  --attendance-weekend-a: #e5e7eb;
+  --attendance-weekend-b: #f3f4f6;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  --heatmap-canvas: var(--muted);
+  --heatmap-soft: color-mix(in oklab, var(--color-point) 15%, transparent);
+  --heatmap-panel: var(--card);
+  --heatmap-border: var(--border);
+  --heatmap-accent: var(--color-point);
+  --heatmap-accent-hover: color-mix(in oklab, var(--color-point) 85%, white);
+  --decrease: #60a5fa;
+  /* 굴 파기 기록(출석 히트맵) - 라이트 모드의 옅은 흙색은 어두운 카드 배경 위에서 붕 떠 보이므로,
+     어두운 배경에 가까운 톤에서 시작해 많이 팔수록(더 많이 방문할수록) 금빛에 가깝게 밝아지도록 잡는다 */
+  --attendance-0: #2b241d;
+  --attendance-1: #5a3c1f;
+  --attendance-2: #8a5a26;
+  --attendance-3: #c1852f;
+  --attendance-4: #f2b544;
+  --attendance-weekend-a: #3f3f46;
+  --attendance-weekend-b: #27272a;
+}
+
+/* 다크모드 임시 보정 - 아직 라이트 전용(bg-white)인 기존 카드들(홈 대시보드, 타임라인,
+   브리핑, 히트맵 등)이 다크모드에서 완전히 깨져 보이지 않게 옅은 테두리만 가볍게 얹는다.
+   배경은 일부러 흰색 그대로 둔다 - 그 안의 텍스트가 라이트 전용 회색톤(text-neutral-700 등)이라
+   배경까지 어둡게 바꾸면 글자 대비가 깨진다. 전체 다크모드 마이그레이션(배경·텍스트 톤 전부
+   교체)은 시간 남으면 별도 작업으로 진행 예정 - 이 규칙은 그때 지워도 된다 */
+.dark .bg-white {
+  border: 1px solid oklch(1 0 0 / 12%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes chat-in {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-chat-in {
+  animation: chat-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 대장 챗 패널 등장 애니메이션 - 부드럽게 올라오면서 끝에 아주 살짝 튕기는 느낌을 준다
+   (cubic-bezier가 100% 지점을 살짝 넘겼다가 되돌아오는 back-ease 곡선이라 자체적으로 통통 튐이 생긴다) */
+@keyframes panel-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-panel-in {
+  animation: panel-in 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* 닫힐 때 애니메이션 - panel-in과 animation-name이 같으면(direction만 reverse) 이미 끝난
+   애니메이션으로 취급돼 재생이 다시 트리거되지 않는 브라우저가 있어, 대신 keyframes 자체를
+   panel-in의 역순으로 별도 정의한다(이름이 달라져야 클래스 전환 시 새 애니메이션이 확실히 시작됨) */
+@keyframes panel-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.94);
+  }
+}
+
+.animate-panel-out {
+  animation: panel-out 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* 대장 챗 모바일 백드롭 - 페이드인만 살짝 준다 */
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdrop-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-backdrop-in {
+  animation: backdrop-in 0.3s ease-out both;
+}
+
+.animate-backdrop-out {
+  animation: backdrop-out 0.3s ease-out both;
+}
+
+/* 브리핑 섹션 강조색 - 배지 배경(--briefing-accent)은 원래 진한 톤 그대로 두고,
+   카드 위 글자색으로 쓰이는 곳만 다크모드 전용 밝은 짝(--briefing-accent-dark)으로 바꾼다 */
+.text-briefing-accent {
+  color: var(--briefing-accent);
+}
+.dark .text-briefing-accent {
+  color: var(--briefing-accent-dark, var(--briefing-accent));
+}
+
+button {
+  cursor: pointer;
+}
+
+/* 가로 스크롤 방지는 app/layout.tsx의 html(overflow-x-hidden)·body(overflow-x-clip) 클래스가 맡는다.
+   여기서 body에 overflow-x: hidden을 다시 주면 body가 스크롤 컨테이너가 되어 sticky가 깨지므로 넣지 않는다 */
